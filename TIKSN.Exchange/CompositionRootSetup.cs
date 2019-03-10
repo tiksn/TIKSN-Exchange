@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TIKSN.DependencyInjection;
+using TIKSN.Finance.ForeignExchange;
 
 namespace TIKSN.Exchange
 {
@@ -13,6 +14,7 @@ namespace TIKSN.Exchange
 
         protected override void ConfigureContainerBuilder(ContainerBuilder builder)
         {
+            builder.RegisterType<ExchangeRateService>().As<IExchangeRateService>().InstancePerLifetimeScope();
         }
 
         protected override void ConfigureOptions(IServiceCollection services, IConfigurationRoot configuration)
