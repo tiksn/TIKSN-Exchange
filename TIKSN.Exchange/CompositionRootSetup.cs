@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
@@ -14,8 +13,6 @@ namespace TIKSN.Exchange
 {
     public class CompositionRootSetup : AutofacCompositionRootSetupBase
     {
-        private static readonly InMemoryDatabaseRoot inMemoryDatabaseRoot = new InMemoryDatabaseRoot();
-
         public CompositionRootSetup(IConfigurationRoot configurationRoot) : base(configurationRoot)
         {
         }
@@ -37,7 +34,7 @@ namespace TIKSN.Exchange
         {
             services.AddDbContext<ExchangeRatesContext>(options =>
             {
-                options.UseInMemoryDatabase("ExchangeRates", inMemoryDatabaseRoot);
+                options.UseSqlite("Data Source=:memory:;Version=3;New=True;");
             });
         }
     }
