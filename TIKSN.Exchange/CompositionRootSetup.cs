@@ -22,6 +22,7 @@ namespace TIKSN.Exchange
         protected override void ConfigureContainerBuilder(ContainerBuilder builder)
         {
             builder.RegisterType<ExchangeRateRepository>().As<IExchangeRateRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<ForeignExchangeRepository>().As<IForeignExchangeRepository>().InstancePerLifetimeScope();
             builder.RegisterType<ExchangeRateService>().As<IExchangeRateService>().InstancePerLifetimeScope();
             builder.RegisterType<TextLocalizer>().As<IStringLocalizer>().SingleInstance();
         }
