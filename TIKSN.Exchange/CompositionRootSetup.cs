@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
+using TIKSN.Data;
 using TIKSN.DependencyInjection;
 using TIKSN.Finance.ForeignExchange;
 using TIKSN.Finance.ForeignExchange.Data;
@@ -23,6 +24,7 @@ namespace TIKSN.Exchange
         {
             builder.RegisterType<ExchangeRateRepository>().As<IExchangeRateRepository>().InstancePerLifetimeScope();
             builder.RegisterType<ForeignExchangeRepository>().As<IForeignExchangeRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>().InstancePerLifetimeScope();
             builder.RegisterType<ExchangeRateService>().As<IExchangeRateService>().InstancePerLifetimeScope();
             builder.RegisterType<TextLocalizer>().As<IStringLocalizer>().SingleInstance();
         }
