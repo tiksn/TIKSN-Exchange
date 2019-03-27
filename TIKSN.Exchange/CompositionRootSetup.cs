@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
@@ -7,7 +6,7 @@ using TIKSN.Data;
 using TIKSN.DependencyInjection;
 using TIKSN.Finance.ForeignExchange;
 using TIKSN.Finance.ForeignExchange.Data;
-using TIKSN.Finance.ForeignExchange.Data.EntityFrameworkCore;
+using TIKSN.Finance.ForeignExchange.Data.LiteDB;
 
 namespace TIKSN.Exchange
 {
@@ -32,10 +31,6 @@ namespace TIKSN.Exchange
 
         protected override void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ExchangeRatesContext>(options =>
-            {
-                options.UseSqlite("Data Source=:memory:;Version=3;New=True;");
-            });
         }
     }
 }
