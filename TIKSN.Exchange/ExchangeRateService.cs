@@ -65,13 +65,13 @@ namespace TIKSN.Exchange
                 "001",
                 TimeSpan.FromHours(12));
 
-            AddIndividualProvider(
-                3752,
-                new CurrencyConverterApiDotCom(_currencyFactory, timeProvider),
-                LocalizationKeys.Key692585112,
-                LocalizationKeys.Key692585112,
-                "001",
-                TimeSpan.FromHours(12));
+            //AddIndividualProvider(
+            //    3752,
+            //    new CurrencyConverterApiDotCom(_currencyFactory, timeProvider),
+            //    LocalizationKeys.Key692585112,
+            //    LocalizationKeys.Key692585112,
+            //    "001",
+            //    TimeSpan.FromHours(12));
         }
     }
 }
