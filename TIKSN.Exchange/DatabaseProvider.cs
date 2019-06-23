@@ -6,7 +6,7 @@ namespace TIKSN.Exchange
 {
     public class DatabaseProvider : LiteDbDatabaseProvider
     {
-        public DatabaseProvider(IConfigurationRoot configuration, IKnownFolders knownFolders) : base(configuration, "Main", knownFolders.LocalAppData)
+        public DatabaseProvider(IConfigurationRoot configuration, IKnownFolders knownFolders) : base(configuration, ConnectionStringNames.MainConnectionString, knownFolders.LocalAppData)
         {
         }
     }
