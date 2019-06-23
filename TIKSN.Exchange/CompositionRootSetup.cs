@@ -5,7 +5,6 @@ using Microsoft.Extensions.Localization;
 using TIKSN.Data;
 using TIKSN.Data.LiteDB;
 using TIKSN.DependencyInjection;
-using TIKSN.Exchange.Commands;
 using TIKSN.Finance.ForeignExchange;
 using TIKSN.Finance.ForeignExchange.Data;
 using TIKSN.Finance.ForeignExchange.Data.LiteDB;
