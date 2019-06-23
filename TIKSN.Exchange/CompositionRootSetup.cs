@@ -2,9 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
+using System.Collections.Generic;
+using TIKSN.Analytics.Logging;
 using TIKSN.Data;
 using TIKSN.Data.LiteDB;
 using TIKSN.DependencyInjection;
+using TIKSN.FileSystem;
 using TIKSN.Finance.ForeignExchange;
 using TIKSN.Finance.ForeignExchange.Data;
 using TIKSN.Finance.ForeignExchange.Data.LiteDB;
@@ -25,6 +28,7 @@ namespace TIKSN.Exchange
             builder.RegisterType<UnitOfWorkFactory>().As<IUnitOfWorkFactory>().InstancePerLifetimeScope();
             builder.RegisterType<ExchangeRateService>().As<IExchangeRateService>().InstancePerLifetimeScope();
             builder.RegisterType<TextLocalizer>().As<IStringLocalizer>().SingleInstance();
+            builder.RegisterInstance(new KnownFoldersConfiguration(GetType().Assembly, KnownFolderVersionConsideration.None));
         }
 
         protected override void ConfigureOptions(IServiceCollection services, IConfigurationRoot configuration)
@@ -33,6 +37,11 @@ namespace TIKSN.Exchange
 
         protected override void ConfigureServices(IServiceCollection services)
         {
+        }
+
+        protected override IEnumerable<ILoggingSetup> GetLoggingSetups()
+        {
+            yield return new LoggingSetup();
         }
     }
 }
